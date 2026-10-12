@@ -42,7 +42,7 @@ Chame a tool **`generate_image`** com:
 - **`description`**: o prompt montado (§2).
 - **`out_path`**: destino do PNG **relativo ao cwd do projeto** (ex: `assets/hero.png`, `marketing/imagens/capa.png`). A tool salva **direto** nesse caminho — não há etapa manual de mover de `~/.codex/generated_images`.
 - **`engine`**: `codex` (default) ou `grok`. Ambos keyless. Só esses dois valores — o enum da tool é `z.enum(["codex","grok"])`.
-  - Regra por tipo de asset: `references/engine-routing.md`.
+  - Siga `references/engine-routing.md` (§ Pedido explícito do usuário).
 
 **Modo prompt** (modo da *skill*, não parâmetro da tool): curto-circuita *antes* da chamada a `generate_image` e entrega o prompt pronto — mesmo com motor instalado e funcionando. **Não é um terceiro valor de `engine`.** Sem MCP (Pré-requisito) também cai neste modo.
 
@@ -54,7 +54,7 @@ O `out_path` **deve** ficar dentro do cwd do projeto (o sandbox do bridge só mo
 Inspecione: sujeito, estilo, composição, **precisão do texto**, itens a evitar. Ajuste com **uma** mudança alvo e re-cheque — não empilhe 5 mudanças num prompt.
 
 ### 5. Reportar
-Sempre informe: **caminho final salvo no projeto**, o **prompt final**, e o **motor efetivamente usado** (`codex` ou `grok`, via polyagent-mcp, keyless). Lote = uma chamada por asset.
+Sempre informe: **caminho final salvo no projeto**, o **prompt final**, o **motor efetivamente usado** (`codex` ou `grok`, via polyagent-mcp, keyless) e a **origem** da decisão conforme `references/engine-routing.md` (§ Origem da decisão e relato). No modo prompt, entregue o prompt e siga o relato da fonte, sem caminho de arquivo gerado. Lote = uma chamada por asset.
 
 ## Nunca
 
