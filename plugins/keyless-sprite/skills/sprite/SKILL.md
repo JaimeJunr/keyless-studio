@@ -64,7 +64,7 @@ O subcomando `pixelate` (downscale nearest + quantize de paleta, com backend Ase
 ## Animação (leia antes de tentar animar)
 
 O generate **não anima de forma coordenada** (dá "samba") — detalhes e alternativas testadas em `references/sprites.md`. Regras:
-- Escolha o engine pelo asset: `engine: grok` pra sprite/pixel art, `engine: codex` (default) pra retrato/ilustração.
+- Escolha o engine pelo asset conforme `references/engine-routing.md` do keyless-image.
 - Pra walk cycle **keyless**: `spritekit.py walkgen <sprite_48.png> <dir> --frames 4` (deslocamento procedural; ritmo por código, mecânico — refine no Aseprite). Não tente animar por N `generate`/`edit` independentes.
 - O forte do generate é o **sprite estático** (âncora, pose única, item, tile). Direcione o esforço pra lá.
 

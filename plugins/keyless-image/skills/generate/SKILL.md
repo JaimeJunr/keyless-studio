@@ -42,8 +42,7 @@ Chame a tool **`generate_image`** com:
 - **`description`**: o prompt montado (§2).
 - **`out_path`**: destino do PNG **relativo ao cwd do projeto** (ex: `assets/hero.png`, `marketing/imagens/capa.png`). A tool salva **direto** nesse caminho — não há etapa manual de mover de `~/.codex/generated_images`.
 - **`engine`**: `codex` (default) ou `grok`. Ambos keyless. Só esses dois valores — o enum da tool é `z.enum(["codex","grok"])`.
-  - **`codex`** (default, gpt-image-2): preferido para retrato, ilustração e cena.
-  - **`grok`** (grok-4.5-build via assinatura Grok): preferido para sprite e pixel art.
+  - Regra por tipo de asset: `references/engine-routing.md`.
 
 **Modo prompt** (modo da *skill*, não parâmetro da tool): curto-circuita *antes* da chamada a `generate_image` e entrega o prompt pronto — mesmo com motor instalado e funcionando. **Não é um terceiro valor de `engine`.** Sem MCP (Pré-requisito) também cai neste modo.
 

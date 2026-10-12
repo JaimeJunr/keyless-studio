@@ -10,7 +10,7 @@ O generate (Grok/Codex) é **forte em sprite estático** e **fraco em animação
 ## Arquitetura (3 camadas)
 
 ```
-1. GENERATE (keyless)   keyless-image → grok (sprite) / codex (ilustração)   [o estático]
+1. GENERATE (keyless)   keyless-image (motor conforme `references/engine-routing.md` do keyless-image)   [o estático]
 2. POST leve (keyless)  spritekit.py → keyout, pixelate, paleta, sheet, gif  [cola barata]
 3. EDIT/ANIMATE (geral) pixel-plugin (pixel-mcp + Aseprite) → import → layers → frames/offset → export
 ```

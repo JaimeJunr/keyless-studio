@@ -22,10 +22,7 @@ EXCLUDED_RELATIVE_PATHS: frozenset[str] = frozenset({"AGENTS.md"})
 REQUIRED_SKILLS: tuple[str, ...] = ("generate", "edit")
 ENGINE_VALUES: tuple[str, ...] = ("codex", "grok")
 DEFAULT_ENGINE: str = "codex"
-ASSET_PREFERENCE: dict[str, tuple[str, ...]] = {
-    "codex": ("retrato", "ilustração", "cena"),
-    "grok": ("sprite", "pixel"),
-}
+ENGINE_ROUTING_REFERENCE: str = "engine-routing.md"
 
 ENGINE_PARAM: re.Pattern[str] = re.compile(r"`engine`|\*\*engine\*\*")
 ENGINE_ASSIGNED_PROMPT: re.Pattern[str] = re.compile(
@@ -98,11 +95,6 @@ def _load_required_skills() -> dict[str, tuple[str, str]]:
     return by_name
 
 
-def _fold_pt(text: str) -> str:
-    table = str.maketrans("áàâãäéèêëíìîïóòôõöúùûüç", "aaaaaeeeeiiiiooooouuuuc")
-    return text.lower().translate(table)
-
-
 def _sibling_indices(
     lines: list[str], start: int, parent_indent: int
 ) -> tuple[list[int], int]:
@@ -157,57 +149,6 @@ def _declares_engine_value(text: str, value: str) -> bool:
         if any(quoted.search(lines[idx]) for idx in span):
             return True
     return False
-
-
-def _value_windows(
-    lines: list[str], sibling_idxs: list[int]
-) -> dict[str, tuple[int, str]]:
-    found: dict[str, tuple[int, str]] = {}
-    for idx in sibling_idxs:
-        token = _sibling_token(lines[idx])
-        if token is not None:
-            found[token.lower()] = (idx + 1, lines[idx])
-    return found
-
-
-def _preference_problem(
-    rel_path: str, engine_line: int, value: str,
-    needles: tuple[str, ...], windows: dict[str, tuple[int, str]],
-) -> list[str]:
-    expected = "/".join(needles)
-    if value not in windows:
-        return [
-            f"{rel_path}:{engine_line}: falta a linha de preferencia por "
-            f"asset para `{value}` (esperado {expected})"
-        ]
-    line_number, line = windows[value]
-    folded = _fold_pt(line)
-    if all(_fold_pt(needle) in folded for needle in needles):
-        return []
-    return [
-        f"{rel_path}:{line_number}: `{value}` sem preferencia de asset "
-        f"(esperado {expected} na janela do bullet)"
-    ]
-
-
-def _asset_preference_problems(rel_path: str, text: str) -> list[str]:
-    lines = text.splitlines()
-    blocks = _iter_engine_blocks(lines)
-    if not blocks:
-        return [
-            f"{rel_path}: falta o bloco de valores de `engine` com "
-            f"preferencia por asset para cada valor"
-        ]
-    problems: list[str] = []
-    for engine_idx, sibling_idxs in blocks:
-        windows = _value_windows(lines, sibling_idxs)
-        for value, needles in ASSET_PREFERENCE.items():
-            problems.extend(
-                _preference_problem(
-                    rel_path, engine_idx + 1, value, needles, windows
-                )
-            )
-    return problems
 
 
 def _declared_defaults(text: str) -> set[str]:
@@ -278,7 +219,10 @@ def test_both_skills_declare_codex_and_grok_engine_values() -> None:
                 missing.append(
                     f"{rel_path}: nao menciona o valor de engine `{value}`"
                 )
-        missing.extend(_asset_preference_problems(rel_path, text))
+        if ENGINE_ROUTING_REFERENCE not in text:
+            missing.append(
+                f"{rel_path}: falta o ponteiro para {ENGINE_ROUTING_REFERENCE}"
+            )
     if missing:
         pytest.fail("\n".join(missing))
 

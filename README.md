@@ -4,7 +4,7 @@ keyless-studio is a Claude Code plugin marketplace for visual generation with no
 
 **Superpoder visual keyless para o Claude Code, via Codex ou Grok.**
 
-O Claude Code não gera pixel. O `keyless-studio` resolve isso ligando o Claude Code ao **Codex** (`image_gen` / gpt-image-2) ou ao **Grok** (melhor pra sprite e pixel art) pelo **[polyagent-mcp](https://github.com/JaimeJunr/polyagent-mcp)** — gera e edita imagem usando a **sua assinatura ChatGPT/Codex ou Grok, sem API key**. Em cima disso, entrega skills para **pixel art, sprite sheets e assets de game dev 2D**, além de **decks/PowerPoint, criativos sociais, infográficos e visuais de site** — genéricos o suficiente pra qualquer coisa (jogo, trabalho, documento, aula, site) e com pacotes especialistas quando você quer resultado pronto de um domínio.
+O Claude Code não gera pixel. O `keyless-studio` resolve isso ligando o Claude Code ao **Codex** (`image_gen` / gpt-image-2) ou ao **Grok** (grok-4.5-build) pelo **[polyagent-mcp](https://github.com/JaimeJunr/polyagent-mcp)** — gera e edita imagem usando a **sua assinatura ChatGPT/Codex ou Grok, sem API key**. Em cima disso, entrega skills para **pixel art, sprite sheets e assets de game dev 2D**, além de **decks/PowerPoint, criativos sociais, infográficos e visuais de site** — genéricos o suficiente pra qualquer coisa (jogo, trabalho, documento, aula, site) e com pacotes especialistas quando você quer resultado pronto de um domínio.
 
 ## Por que
 

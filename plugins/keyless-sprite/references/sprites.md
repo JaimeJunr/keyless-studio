@@ -81,12 +81,11 @@ Testado à exaustão (Codex e Grok): **o generate NÃO produz animação coorden
 - **`image_to_video`** (o Grok tem a tool built-in) seria o caminho confiável — o movimento nasce no tempo — MAS falha sob **Zero Data Retention** (exige `output.upload_url`): indisponível keyless neste setup.
 - **Caminho keyless que funciona**: `spritekit.py walkgen <sprite> <outdir>` — deslocamento procedural das pernas (ritmo por código, não IA). Coordenado, mas **mecânico**; refine no editor/Aseprite. Melhor em sprites simétricos com pernas na faixa inferior.
 
-**O forte do generate é o SPRITE ESTÁTICO** (âncora, pose única, item, tile, turnaround) — aí ele brilha, sobretudo o Grok.
+**O forte do generate é o SPRITE ESTÁTICO** (âncora, pose única, item, tile, turnaround) — aí ele brilha.
 
 ## Engine por tipo de asset (`generate_image` param `engine:`)
 
-- **`grok`** — sprite de personagem / pixel art: sai nítido, "sprite-like", ganha do Codex (testado).
-- **`codex`** (default) — retrato / ilustração detalhada / cena: melhor coerência e detalhe.
+A regra de roteamento vive em `references/engine-routing.md` do keyless-image.
 
 ## Fundo → alpha
 
