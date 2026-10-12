@@ -37,7 +37,7 @@ Chame a tool **`generate_image`** com:
 - **`description`**: o prompt Keep/Change (§2).
 - **`out_path`**: um **arquivo novo** (não sobrescreva o original) relativo ao cwd do projeto — versione (`-v2`, `-v3`). A tool salva **direto** nesse caminho e retorna só o path final.
 - **`engine`**: `codex` (default) ou `grok`. Ambos keyless. Só esses dois valores — o enum da tool é `z.enum(["codex","grok"])`.
-  - Regra por tipo de asset: `references/engine-routing.md`.
+  - Siga `references/engine-routing.md` (§ Pedido explícito do usuário).
 
 **Modo prompt** (modo da *skill*, não parâmetro da tool): curto-circuita *antes* da chamada a `generate_image` e entrega o prompt pronto — mesmo com motor instalado e funcionando. **Não é um terceiro valor de `engine`.** Sem MCP (Pré-requisito) também cai neste modo.
 
@@ -45,7 +45,7 @@ Chame a tool **`generate_image`** com:
 Se desviou do que devia ficar, **reforce o "Keep:"** e tente de novo, uma mudança por vez.
 
 ### 5. Reportar
-Caminho final no projeto + prompt usado + o motor efetivamente usado (`codex` ou `grok`, via polyagent-mcp). Não afirme perfeição; ofereça 1 ajuste.
+Caminho final no projeto + prompt usado + o motor efetivamente usado (`codex` ou `grok`, via polyagent-mcp) + a origem da decisão conforme `references/engine-routing.md` (§ Origem da decisão e relato). No modo prompt, entregue o prompt de edição e siga a indicação de anexos e o relato da fonte, sem caminho de arquivo gerado. Não afirme perfeição; ofereça 1 ajuste.
 
 ## Nunca
 
