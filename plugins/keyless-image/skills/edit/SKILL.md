@@ -37,8 +37,7 @@ Chame a tool **`generate_image`** com:
 - **`description`**: o prompt Keep/Change (§2).
 - **`out_path`**: um **arquivo novo** (não sobrescreva o original) relativo ao cwd do projeto — versione (`-v2`, `-v3`). A tool salva **direto** nesse caminho e retorna só o path final.
 - **`engine`**: `codex` (default) ou `grok`. Ambos keyless. Só esses dois valores — o enum da tool é `z.enum(["codex","grok"])`.
-  - **`codex`** (default, gpt-image-2): preferido para retrato, ilustração e cena.
-  - **`grok`** (grok-4.5-build via assinatura Grok): preferido para sprite e pixel art.
+  - Regra por tipo de asset: `references/engine-routing.md`.
 
 **Modo prompt** (modo da *skill*, não parâmetro da tool): curto-circuita *antes* da chamada a `generate_image` e entrega o prompt pronto — mesmo com motor instalado e funcionando. **Não é um terceiro valor de `engine`.** Sem MCP (Pré-requisito) também cai neste modo.
 

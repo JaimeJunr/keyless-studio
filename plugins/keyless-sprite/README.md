@@ -16,7 +16,7 @@
 
 ## Arquitetura (3 camadas)
 
-1. **GENERATE** (keyless) — `keyless-image` → grok (sprite) / codex (ilustração). O estático.
+1. **GENERATE** (keyless) — `keyless-image` (motor conforme `plugins/keyless-image/references/engine-routing.md`). O estático.
 2. **POST leve** (keyless) — `spritekit.py`: keyout, pixelate, paleta, sheet, gif, walkgen.
 3. **EDIT/ANIMATE** (geral) — [pixel-plugin](https://github.com/willibrandon/pixel-plugin) (pixel-mcp + Aseprite): layers/frames/cels, walk cycle real, export sheet. Instalado **ao lado**; `keyless-sprite:handoff` orquestra.
 
